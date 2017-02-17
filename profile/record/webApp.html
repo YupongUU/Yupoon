@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <title>变声小能手</title>
+    <link rel="stylesheet" href="FirstP.css">
+    <link rel="stylesheet" href="buttons.css">
+
+    <script type="text/javascript">
+        function speak(){
+            var img1 = document.getElementById("change");
+            img1.style.display = "block";
+        };
+        function speak2(){
+            var img1 = document.getElementById("change");
+            img1.style.display = "none";
+        };
+    </script>
+</head>
+<body >
+    <div class="boxmain">
+    <header>
+       <h2>变声小能手</h2>
+    </header>
+    <div class="imgchange" >
+            <img id="change" src="img/superheroes-02-2.png" alt="pcture1" style="display: none" width="200" height="200">
+    </div>
+    <div class="buttons">
+        <div class="record">
+            <button  class="button button-raised button-primary" onclick="speak()">
+                <img src="img/record.png"><span>开始录音</span>
+            </button>
+        </div>
+        <div class="stop">
+            <button  class="button button-raised button-primary" onclick="speak2()">
+                <img src="img/stop.png"><span>停止录音</span>
+            </button>
+        </div>
+        <div class="play ">
+            <button class="button button-raised button-primary">
+                <img src="img/play.png"><span>播放录音</span>
+            </button>
+        </div>
+        <div class="rerecord">
+            <button class="button button-raised button-primary" onclick="speak()">
+            <img src="img/rerecord.png"><span>重新录音</span>
+            </button>
+        </div>
+        <div class="upload">
+            <button class="button button-raised button-primary">
+                <img src="img/upload.png"><span>上传录音</span>
+            </button>
+        </div>
+    </div>
+    <footer>
+        <p>&copy;<不说普通话小组>出品 2016-04</p>
+    </footer>
+        </div>
+</body>
+
+</html>

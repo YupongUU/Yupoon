@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="Author" contect="GabrielChen">
+    <meta name="keywords" contect="Web Audio API">
+    <title>Web Audio API 学习</title>
+    <!-- <script>
+        var canvas;
+        var ctx;
+        var audioContext;
+        var analyser;
+        var mic;
+        //初始化两个画布的函数，声明为2d绘图
+        function init() {
+            canvasOne = document.getElementById('canvasOne');
+            ctx = canvasOne.getContext("2d");
+            canvasTwo = document.getElementById('canvasTwo');
+            ctx2 = canvasTwo.getContext("2d");
+
+
+        }
+        //getMedia调用参数如下，返回一个多媒体流
+        //constraints可选{ video: true, audio: true },代表获取多媒体的类型
+        //var stream = navigator.getUserMedia(constraints, successCallback, errorCallback);
+
+        navigator.getMedia = ( navigator.getUserMedia ||
+        navigator.webkitGetUserMedia ||
+        navigator.mozGetUserMedia ||
+        navigator.msGetUserMedia);
+
+        navigator.getMedia ( { audio: true }, function (stream) {
+            audioContext = new (window.AudioContext || window.webkitAudioContext);
+            //返回一个多媒体流
+            mic = audioContext.createMediaStreamSource(stream);
+            //creates an AnalyserNode 创建一个分析节点
+            analyser= audioContext.createAnalyser();
+            //fftsize默认值2048，是快速傅立叶变换用于频域分析的值，必须为2的幂，而我们得到的数据通常为其的一半，下面会说道
+            analyser.fftSize = 512;
+            mic.connect(analyser);
+            //调用绘图函数
+            drawSpectrum();
+        },function(){});
+
+
+        //圆形声波绘图和矩形绘图
+        function drawSpectrum() {
+            var WIDTH = canvasOne.width;
+            var HEIGHT= canvasOne.height;
+            //长度为128无符号数组用于保存getByteFrequencyData返回的频域数据
+            var array =  new Uint8Array(128);
+            analyser.getByteFrequencyData(array);
+
+            //以下是根据频率数据画图，主要为canvas知识，不做详细解答
+            ctx.clearRect(0, 0, WIDTH , HEIGHT);
+            ctx2.clearRect(0,0, 600, 600);
+            for ( var i = 0; i < (array.length); i++ ){
+                var value = array[i];
+                ctx.fillRect(i*10,HEIGHT-value,3,HEIGHT);
+            }
+
+            //ctx2.clearRect(700, 700, WIDTH, HEIGHT);
+            for ( var i = 0; i < (array.length); i++ ){
+                var value = array[i];
+                ctx2.beginPath();
+                ctx2.arc(300,300,value,0,360,false);
+                ctx2.lineWidth=5;
+                ctx2.strokeStyle="rgba("+value+","+value+",0,0.3)";
+                ctx2.stroke();//画空心圆
+                ctx2.closePath();
+
+            }
+
+            requestAnimationFrame(drawSpectrum);
+        };
+
+
+
+
+    </script>
+   <style>
+        #canvasOne {
+            border: 1px solid #ddd;
+        }
+    </style> -->
+    <style>
+        body{
+            background-color: #00B7FF;
+        }
+    </style>
+</head>
+<body >
+<h1>从audio源获取声音</h1>
+<audio src="BEC包子%20-%20周杰伦歌曲串烧.mp3" controls="controls" id="audio"  >你的浏览器不支持audio标签</audio>
+<img src="img/play.png" alt="play_img" id="playpause" style="width:100px height:100px">
+<img src="img/stop.png" alt="play_img" id="stop" style="width:100px height:100px">
+<h1>频谱图</h1>
+<canvas id="canvasFormAudio" width="400" height="300"></canvas>
+<!--<h1>频域图模仿</h1>
+<canvas id="canvasOne" width="640"></canvas>
+<h1>圆形声波图</h1>
+<canvas id="canvasTwo" width="800" height="800"></canvas>
+-->
+
+<script type="text/javascript">
+
+//直接从audio处理音频源，声明一些必要的变量
+    var context1;
+    var source;
+    var analyserfa;
+    var canvasFormAudio;
+    var ctxfa;
+    var img1;
+    var img2;
+    var audio;
+
+    //图标控制播放、暂停
+    var audio =document.getElementById("audio"); // 从audio获取声音源
+    audio.volume = 0.5;                             //音频默认音量
+    img1 = document.getElementById("playpause");   //创建图标控制播放
+    img1.onclick = function(){
+        if (audio.paused){
+            audio.play();
+        }else{
+            audio.pause();
+        }
+    }
+    audio.addEventListener("play", function (e) {
+            img1.src="img/pause.png";
+        }, false);
+    audio.addEventListener("pause", function (e) {
+            img1.src="img/play.png";
+        }, false);
+    //停止播放
+    img2 =  document.getElementById("stop")
+    img2.onclick=function stopplay(){
+        audio.pause();
+        audio.currentTime = 0.0;
+    }
+    //初始化canvas画布
+    canvasFormAudio = document.getElementById('canvasFormAudio');
+    ctxfa = canvasFormAudio.getContext("2d");
+    try {
+//建立一个音频环境，因为浏览器实现不同，做了一点兼容性处理
+        context1 = new (window.AudioContext || window.webkitAudioContext);
+    } catch(e) {
+        throw new Error('The Web Audio API is unavailable');
+    }
+//建立一个分析器
+    analyserfa=context1.createAnalyser();
+    window.addEventListener('load', function(e) {
+        var source = context1.createMediaElementSource(audio);
+        source.connect(analyserfa);
+        analyserfa.connect(context1.destination);
+//调用绘图函数
+        drawSpectrumfa();
+    }, false);
+    function drawSpectrumfa() {
+        var WIDTH = canvasFormAudio.width;
+        var HEIGHT= canvasFormAudio.height;
+        var array =  new Uint8Array(128);
+        //复制当前的频率值到一个无符号数组中
+        analyserfa.getByteFrequencyData(array);
+        //clearRect(矩形左上角x坐标，矩形左上角y坐标，清除矩形的宽，清除矩形的高)
+        ctxfa.clearRect(0, 0, WIDTH, HEIGHT);
+        //循环生成长条矩形
+        for ( var i = 0; i < (array.length); i++ ){
+            var value = array[i];
+            //fillRect(矩形左上角x坐标，矩形左上角y坐标，矩形宽，矩形高)
+            //这里我们的array一共有128组数据，所以我们当时canvas设置的宽度为5*128=640
+            ctxfa.fillRect(i*5,HEIGHT-value,3,HEIGHT);
+            ctxfa.strokeStyle="#000000"
+            ctxfa.fillStyle = "#FF0000"; //定义颜色
+
+            ctxfa.fillStyle = "rgba(42,33,123,0.5)"; //定义颜色，支持透明
+
+        }
+        //根据浏览器频率绘图或者操作一些非css效果
+        requestAnimationFrame(drawSpectrumfa);
+    }
+</script>
+</body>
+</html>

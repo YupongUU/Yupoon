@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="./CSS/jquery.fullPage.css">
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="./CSS/swiper.min.css">
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.fullPage.min.js"></script>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        body {
+            color: #FFFFFF;
+        }
+        
+        .section1 {
+            background-color: #3f627b;
+        }
+        
+        .section2 {
+            background-color: #e74c3c;
+        }
+        
+        .section3 {
+            background-color: #FBC02D;
+        }
+        
+        .section4 {
+            background-color: #16a085;
+        }
+        
+        #menu {
+            margin: 0;
+            padding: 0;
+            position: fixed;
+            right: 0;
+            top: 40%;
+            list-style-type: none;
+            z-index: 70;
+        }
+        
+        #menu li {
+            margin: 20px;
+            font-size: 14px;
+            padding: 5px 0;
+        }
+        
+        #menu a {
+            width: 10px;
+            height: 10px;
+            float: left;
+            border-radius: 50%;
+            background-color: #fff;
+            color: #333;
+            text-decoration: none;
+        }
+        
+        #menu .active a {
+            color: #fff;
+            background-color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="ido">
+        <div class="section section1">
+            <div class="container">
+                <div class="header">
+                    <h1>Hello World！</h1>
+                    <p>欢迎来到Yupoon的个人站！</p>
+                </div>
+                <nav class="s1-nav">
+                    <ul>
+                        <li>了解我 </li>
+                        <li>作品库</li>
+                        <li>联系我</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="section section2">
+            <div class="container">
+                <h2 class="text-title">
+                    关于我
+                </h2>
+                <p class="text-title-en">About Me</p>
+                <div class="about">
+                    <div class="about-left">
+                        <img src="./img/头像.png" alt="avater">
+                        <div class="about-left-info">
+                            <p>吴毓鹏</p>
+                        </div>
+                    </div>
+                    <div class="about-content"></div>
+                </div>
+            </div>
+        </div>
+        <div class="section section3 ">
+            <div class="container">
+                <h2 class="text-title">作品库</h2>
+                <p class="text-title-en">Projects</p>
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="project-info">
+                                <img src="" alt="" class="project-info-img">
+                                <p class="project-info-text">介绍介绍介绍介绍</p>
+                                <div class="cover"></div>
+                            </div>
+                            <p class="project-info-title">标题</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="project-info">
+                                <img src="" alt="" class="project-info-img">
+                                <div class="cover"></div>
+                                <p class="project-info-text">介绍介绍介绍介绍</p>
+                            </div>
+                            <p class="project-info-title">标题</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="project-info">
+                                <img src="" alt="" class="project-info-img">
+                                <div class="cover"></div>
+                                <p class="project-info-text">介绍介绍介绍介绍</p>
+                            </div>
+                            <p class="project-info-title">标题</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="project-info">
+                                <img src="" alt="" class="project-info-img">
+                                <div class="cover"></div>
+                                <p class="project-info-text">介绍介绍介绍介绍</p>
+                            </div>
+                            <p class="project-info-title">标题</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="project-info">
+                                <img src="" alt="" class="project-info-img">
+                                <div class="cover"></div>
+                                <p class="project-info-text">介绍</p>
+                            </div>
+                            <p class="project-info-title">标题</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="project-info">
+                                <img src="" alt="" class="project-info-img">
+                                <div class="cover"></div>
+                                <p class="project-info-text">介绍</p>
+                            </div>
+                            <p class="project-info-title">标题</p>
+                        </div>
+                        <div class="swiper-slide">Slide 7</div>
+                        <div class="swiper-slide">Slide 8</div>
+                        <div class="swiper-slide">Slide 9</div>
+                        <div class="swiper-slide">Slide 10</div>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                    <!--Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </div>
+        <div class="section section4">
+            <div class="container">
+                <h2 class="text-title">联系我</h2>
+                <p class="text-title-en">Contect Me</p>
+                <div class="contect">
+                </div>
+            </div>
+        </div>
+        <ul id="menu">
+            <li data-menuanchor="page1" class="active">
+                <a href="#page1"></a>
+            </li>
+            <li data-menuanchor="page2">
+                <a href="#page2"></a>
+            </li>
+            <li data-menuanchor="page3">
+                <a href="#page3"></a>
+            </li>
+            <li data-menuanchor="page4">
+                <a href="#page4"></a>
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="./js/swiper.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#ido").fullpage({
+            loopBottom: true,
+            //绑定菜单
+            anchors: ['page1', 'page2', 'page3', 'page4'],
+            menu: '#menu',
+            'navigation': true,
+        });
+    });
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        slidesPerView: 3,
+        paginationClickable: true,
+        spaceBetween: 30,
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+    });
+</script>
+
+</html>

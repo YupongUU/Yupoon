@@ -1,0 +1,44 @@
+/* 预置样式 */
+html,div,img,p,hi,h2,h3{
+    margin:0;
+    padding:0;
+}
+div,img{
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    padding:0;
+    margin:0;
+    border:0px;
+    /* display: inline-block;*/
+}
+
+
+/* 文档样式 */
+body{
+    width:100%;
+    padding:0px;
+    margin:0 auto;
+    background-color: #0b5fa5;
+    font:1.2em/1.3em "微软雅黑",sans-serif;
+    text-align: center;
+    position:relative;
+
+}
+
+
+/* header部分 */
+header{
+    margin:0px auto;
+    color: #eeeeee;
+    background: #0880d7;
+    height:40px;
+    padding:10px;
+}
+header div{
+    border:1px #EEEEEE solid;
+    width:200px;
+    height:40px;
+    margin:0 auto;
+    padding:5px 0;
+}
